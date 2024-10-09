@@ -1,0 +1,44 @@
+﻿@using NTT.WebApi.Database
+@model List<VProdCat>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@* <div class="text-center">
+     <h1 class="display-4">Welcome</h1>
+     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+ </div> *@
+
+<div class=container>
+    <a asp-controller="Home" asp-action="Create">Создать новый товар</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название продукта</th>
+                <th scope="col">Описание продукта</th>
+                <th scope="col">Категория</th>
+                <th scope="col">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var count = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@count</td>
+                        <td>@item.ProductName</td>
+                        <td>@item.ProductDescr</td>
+                        <td>@item.CategoryName</td>
+                        <td>
+                            <a asp-controller="Home" asp-action="Update" asp-route-id="@item.ProductId">Изменить</a>
+                        </td>
+                    </tr>
+                    count++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

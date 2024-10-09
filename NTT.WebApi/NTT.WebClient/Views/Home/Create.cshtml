@@ -1,0 +1,33 @@
+﻿@model NTT.WebApi.Database.Product
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <form method="post" >
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="">
+            <label asp-for="Title" class="control-label">Наменование</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="">
+            <label asp-for="Descr" class="control-label">Описание</label>
+            <input asp-for="Descr" class="form-control" />
+            <span asp-validation-for="Descr" class="text-danger"></span>
+        </div>
+        <div class="">
+            <label asp-for="CategoryId" class="control-label">Категория</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Cats">
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="">
+            <button class="btn btn-primary" asp-action="Create" type="submit">Создать</button>
+            <a class="link-info" asp-action="Index">Назад</a>
+
+        </div>
+    </form>
+</div>
